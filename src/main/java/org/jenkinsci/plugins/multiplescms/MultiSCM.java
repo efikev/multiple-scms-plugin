@@ -20,6 +20,7 @@ import hudson.util.DescribableList;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -125,7 +126,9 @@ public class MultiSCM extends SCM implements Saveable {
 				}
 			}
 			if (subChangeLog.exists()) {
-				String subLogText = FileUtils.readFileToString(subChangeLog,"UTF-8");
+				System.out.println("Running Kev's code - Charset.ISO_8859_1");
+				String subLogText = FileUtils.readFileToString(subChangeLog,Charset.ISO_8859_1);
+				System.out.println(subLogText);
 				//Dont forget to escape the XML in case there is any CDATA sections
 				logWriter.write(String.format("<%s scm=\"%s\">\n<![CDATA[%s]]>\n</%s>\n",
 						MultiSCMChangeLogParser.SUB_LOG_TAG,
