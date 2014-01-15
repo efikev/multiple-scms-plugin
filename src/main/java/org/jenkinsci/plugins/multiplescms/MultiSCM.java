@@ -127,7 +127,7 @@ public class MultiSCM extends SCM implements Saveable {
 			}
 			if (subChangeLog.exists()) {
 				System.out.println("Running Kev's code - Charset.ISO_8859_1");
-				String subLogText = FileUtils.readFileToString(subChangeLog,StandardCharsets.ISO_8859_1);
+				String subLogText = FileUtils.readFileToString(subChangeLog,StandardCharsets.ISO_8859_1.name());
 				System.out.println(subLogText);
 				//Dont forget to escape the XML in case there is any CDATA sections
 				logWriter.write(String.format("<%s scm=\"%s\">\n<![CDATA[%s]]>\n</%s>\n",
